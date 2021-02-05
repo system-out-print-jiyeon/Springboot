@@ -2,9 +2,7 @@ package hello.hellospring.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class HelloController {
@@ -16,7 +14,7 @@ public class HelloController {
     }
 
     @GetMapping("hello-mvc")
-    public String helloMvc(@RequestParam(value = "name", required = false, defaultValue = "지연") String name, Model model) {
+    public String helloMvc(@RequestParam(value = "name", required = false) String name, Model model) {
         model.addAttribute("name", name);
         return "hello-template";
     }
@@ -35,6 +33,14 @@ public class HelloController {
         return hello;
 
     }
+
+    @RequestMapping(value = "/",method = RequestMethod.GET)
+    public String thymeleafTest(Model model){
+        model.addAttribute("hello","STUDY");
+        return "/thymeleafExample";
+    }
+
+
 
     static class Hello{
         private String name;
