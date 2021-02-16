@@ -34,12 +34,14 @@ public class HelloController {
 
     }
 
+    
+    /**
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public String thymeleafTest(Model model){
         model.addAttribute("hello","STUDY");
         return "/thymeleafExample";
     }
-
+    **/
 
 
     static class Hello{
